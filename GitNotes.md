@@ -103,12 +103,38 @@ git checkout -b <name> : 新建并切换到 name 分支
 git merge <name> : 合并分支
 
 这里有两个步骤：
-1）切换到要合并的分支（例如 master 分支）；
+1）切换到要合并的分支（例如切换到 master 分支, git checkout master）；
 2）执行 git merge <name> 意为将 name 分支合并到 master 分支。
 
 合并分支时，加上 --no-ff 参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 例如：git merge --no--off -m “merge with no-ff” -dev
 ```
+
+- merge & rebase
+
+rebase 也是合并的意思，例如：
+
+```basic
+把 featureA 分支合并到 master 分支
+git checkout master
+git rebase featureA
+```
+
+rebase 与 merge 的区别：可以理解为有两个不同的书架，两个操作都是把书架的书整理到一起。
+
+​	merge: 简单粗暴，直接腾出一块地方，把另一个书架的书放过去。
+
+优点：可以知道哪些书是另一个书架的。
+
+缺点：没有按时间排序，比较混乱。
+
+
+
+​	rebase: 先比较两个书架的书，按购书时间重新排序，然后重新放置。
+
+优点：按时间排序，有条理。
+
+缺点：不清楚哪些书来自哪个书架。
 
 - 删除分支
 
